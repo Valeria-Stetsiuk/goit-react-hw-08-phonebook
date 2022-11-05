@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { register } from '../../redux/auth/auth-operations';
+import s from '../../components/RegisterForm/RegisterForm.module.css';
 
 export const RegisterForm = () => {
   const [name, setName] = useState('');
@@ -34,30 +37,48 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" name="name" value={name} onChange={handleChange} />
-      </label>
-      <label>
-        Email:
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Password:
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-      </label>
-      <button>Register</button>
-    </form>
+    <div className={s.container}>
+      <form onSubmit={handleSubmit} className={s.form}>
+        <label className={s.label}>
+          <TextField
+            label="Name"
+            className={s.input}
+            variant="standard"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label className={s.label}>
+          <TextField
+            label="Email"
+            className={s.input}
+            variant="standard"
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label className={s.label}>
+          <TextField
+            label="Password"
+            className={s.input}
+            variant="standard"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <Button variant="text" type="submit" className={s.buttonRegister}>
+          Register
+        </Button>
+      </form>
+    </div>
   );
 };

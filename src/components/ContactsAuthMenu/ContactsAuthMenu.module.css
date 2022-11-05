@@ -1,0 +1,16 @@
+.pretitle{
+    font-size: 18px;
+    font-weight: 500;
+}
+.buttonLogOut{
+    background-color: rgb(71, 71, 174);
+    
+        color: #fff;
+        height: 40px;
+        width: 100px;
+        display: flex;
+}
+.buttonLogOut:hover,
+buttonLogOut:focus{
+    background-color: rgb(18, 18, 228);
+}

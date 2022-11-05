@@ -6,7 +6,8 @@ import {
   selectError,
 } from '../../redux/contacts/selectors';
 import s from './PhoneList.module.css';
-
+import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 export const PhoneList = () => {
   const renderContacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
@@ -30,7 +31,15 @@ export const PhoneList = () => {
                   disabled={isLoading}
                   onClick={() => dispatch(deleteContact(id))}
                 >
-                  Dlete
+                  <PersonRemoveIcon />
+                </button>
+                <button
+                  className={s.buttonDelete}
+                  type="button"
+                  disabled={isLoading}
+                  onClick={() => dispatch(deleteContact(id))}
+                >
+                  <AutoFixHighIcon />
                 </button>
               </li>
             );

@@ -1,0 +1,38 @@
+.form{
+    display: flex;
+    gap:10px;
+    justify-content: center;
+}
+.container{
+    padding: 20px;
+    
+       
+}
+.input{
+    background-color: aliceblue;
+    border-radius: 6px;
+}
+.input:hover,.input:focus {
+    outline: 2px solid #606eda;
+    border-radius: 6px;
+}
+
+.label{
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap:5px;
+}
+.buttonLogin{
+    background-color: rgb(71, 71, 174);
+    
+    color: #fff;
+    height: 30px;
+    width: 80px;
+    display: flex;
+   
+}
+.buttonLogin:hover, buttonLogin:focus{
+background-color: rgb(18, 18, 228);
+}

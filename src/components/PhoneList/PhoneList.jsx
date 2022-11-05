@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contactsOperations';
 import {
-  selectRenderContacts,
+  selectContacts,
   selectIsLoading,
   selectError,
 } from '../../redux/contacts/selectors';
 import s from './PhoneList.module.css';
 
 export const PhoneList = () => {
-  const renderContacts = useSelector(selectRenderContacts);
+  const renderContacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
@@ -23,13 +23,14 @@ export const PhoneList = () => {
               <li key={id} className={s.phoneItem}>
                 <span className={s.phoneName}>{name} :</span>
                 {number}
+
                 <button
                   className={s.buttonDelete}
                   type="button"
                   disabled={isLoading}
                   onClick={() => dispatch(deleteContact(id))}
                 >
-                  Delete
+                  Dlete
                 </button>
               </li>
             );

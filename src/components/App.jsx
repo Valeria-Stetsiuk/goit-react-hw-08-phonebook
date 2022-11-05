@@ -1,35 +1,9 @@
-// import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
-// import { fetchContacts } from 'redux/operations';
-// import { Form } from './ContactForm/ContactForm';
-// import { Section } from './Section/Section';
-// import { PhoneList } from './PhoneList/PhoneList';
-// import { Filter } from './ContactFilter/ContactFilter';
-// import s from '../components/App.module.css';
-
-// export const App = () => {
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     dispatch(fetchContacts());
-//   }, [dispatch]);
-//   return (
-//     <>
-//       <Section title="Phonebook">
-//         <Form />
-//       </Section>
-//       <Section title="Contacts">
-//         <div className={s.Contacts}>
-//           <Filter />
-//           <PhoneList />
-//         </div>
-//       </Section>
-//     </>
-//   );
-// };
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { HomePage } from 'pages/HomePage/HomePage';
+import { ContactPage } from '../pages/ContactPage/ContactPage';
+import { PrivateRoute } from 'HOCs/PrivateRoute';
 
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage/RegisterPage';
@@ -58,6 +32,14 @@ export const App = () => {
                 <PublicRoute>
                   <HomePage />
                 </PublicRoute>
+              }
+            />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <ContactPage />
+                </PrivateRoute>
               }
             />
             <Route

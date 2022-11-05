@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 import {
   selectRenderContacts,
   selectIsLoading,
   selectError,
-} from '../../redux/selectors';
+} from '../../redux/contacts/selectors';
 import s from './PhoneList.module.css';
 
 export const PhoneList = () => {

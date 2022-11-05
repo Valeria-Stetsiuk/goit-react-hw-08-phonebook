@@ -1,18 +1,32 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contacts/contactsOperations';
+import {
+  deleteContact,
+  updateContact,
+} from 'redux/contacts/contactsOperations';
 import {
   selectContacts,
   selectIsLoading,
   selectError,
 } from '../../redux/contacts/selectors';
+import { useState } from 'react';
 import s from './PhoneList.module.css';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 export const PhoneList = () => {
-  const renderContacts = useSelector(selectContacts);
+  const [contactToUpdate, setContactToUpdate] = useState({});
+  const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const dispatch = useDispatch();
+  const renderContacts = useSelector(selectContacts);
+
+  const showUpdateForm = contactId => {
+    const contact = renderContacts.find(({ id }) => id === contactId);
+    setContactToUpdate(contact);
+  };
+
+  const closeForm = () => {
+    setContactToUpdate(null);
+  };
   return (
     <>
       {error && <p>Sorry!The action was not completed, try again later.</p>}
@@ -37,10 +51,16 @@ export const PhoneList = () => {
                   className={s.buttonDelete}
                   type="button"
                   disabled={isLoading}
-                  onClick={() => dispatch(deleteContact(id))}
+                  onClick={() => showUpdateForm(id)}
                 >
                   <AutoFixHighIcon />
                 </button>
+                {contactToUpdate?.id === id && (
+                  <updateContact
+                    contact={contactToUpdate}
+                    closeForm={closeForm}
+                  />
+                )}
               </li>
             );
           })}

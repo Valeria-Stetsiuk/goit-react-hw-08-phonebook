@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { updateContact } from 'redux/contacts/contactsOperations';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
+import { StyledForm } from './UpdateContactForm.styled';
 
 export const UpdateContactForm = ({ contact, closeForm }) => {
   const [name, setName] = useState(contact.name);
@@ -21,7 +22,7 @@ export const UpdateContactForm = ({ contact, closeForm }) => {
   };
 
   return (
-    <>
+    <StyledForm onSubmit={handleSubmit}>
       <TextField
         label="Name"
         size="small"
@@ -41,7 +42,7 @@ export const UpdateContactForm = ({ contact, closeForm }) => {
       <Button variant="outlined" size="small" type="submit">
         Save
       </Button>
-    </>
+    </StyledForm>
   );
 };
 

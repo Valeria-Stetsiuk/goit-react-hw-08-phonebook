@@ -1,0 +1,10 @@
+.formMain{
+    display: flex;
+    gap:15px;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.buttonSave{
+    color: aliceblue;
+    background-color: #48b9ea;
+}
